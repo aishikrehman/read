@@ -1,0 +1,1 @@
+{{ if ne .Description ""}}{{ .Description }}{{- else -}}{{ .Summary | truncate 300 }}">{{- end }}

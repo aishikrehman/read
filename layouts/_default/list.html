@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="container-xxl mt-3 my-md-4 bd-layout">
+  {{ partial "aside.html" . }}
+  <main class="bd-main order-1">
+    <div class="bd-intro pt-2 ps-lg-2">
+      <h1 class="bd-title mb-0" id="content">{{ .Title }}</h1>
+      <div class="d-md-flex flex-md-row align-items-center justify-content-between pt-2">
+        <a class="btn btn-sm btn-bd-light mb-3 mb-md-0 rounded-2" href="{{.Site.Params.githubEditBaseUrl}}{{.File.Path}}" title="View and edit this file on GitHub"
+          target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      {{ if .Param "summary" }}<p class="bd-lead">{{ .Summary | truncate 250 }}</p> {{ end }}
+    </div>
+    {{/*  {{ if and (gt .WordCount 400 ) (ne .Params.toc "false") }}  */}}
+    <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-muted">
+      <h5>On this page</h5>
+     {{ .TableOfContents }}
+    </div>
+    {{/*  {{ end }}  */}}
+    <div class="bd-content ps-lg-2">
+      {{ .Content }}
+    </div>
+  </main>
+</div>
+{{ partial "footer.html" .}}
+{{ end }}

@@ -1,0 +1,41 @@
+baseUrl = "https://aishikrehman.com/"
+title =  "Discrete Mathematics"
+paginate = 6
+
+[params]
+  githubEditBaseUrl = "https://github.com/aishikrehman/discrete-mathematics/"
+  siteSubTitle = "Bengali Computational Linguist"
+  siteSubTitleBN = "বাংলা বইয়ের সংগ্রহশালা"
+  mainURL = "https://aishikrehman.com/"
+  siteURL = "https://aishikrehman.com/"
+  siteName = "ঐশিক রেহমান"
+  siteNames = ["জিরোডেমি বই", "ZeroBooks", "0dmey Books"]
+  siteLang = "bn-BD"
+  siteLogo = "/images/favicon.png"
+  siteOG = "/images/Aishik Rehman-og-image.png"
+  searchText = "খুঁজুন"
+  gsc = "https://cse.google.com/cse.js?cx=a3eaf405be35e4a4b"
+  authorName = "Aishik Rehman"
+  authorNameBN = "ঐশিক রেহমান"
+  authorEmail =  "hello@aishikrehman.com"
+  authorFacebook =  "aishikrehman"
+  authorLinkedin =  "aishikrehman"
+  authorGithub =   "aishikrehman"
+  authorPhone =  "+88 016 016 60 666"
+  authorURL =  "https://aishikrehman.com/about/"
+  authorPicture =  "/assets/images/Aishik Rehman_Mymensingh_2019.jpg"
+  math = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+      hardWraps = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+[taxonomies]
+  categories = ""

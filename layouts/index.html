@@ -1,0 +1,43 @@
+{{ define "head" }}
+{{ partial "seo/searchaction.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{if .Site.Home.Content }}
+<div class="home">
+	<div class="container">
+		{{.Content}}
+			<hr>
+		<div class="col-lg-8 m-auto">
+			<h2>Docs</h2>
+		{{ range .Site.Pages }}
+		<div class="col-md-12 col-sm-6">
+			<div class="post post-list">
+				<div class="thumb rounded" style="background-image: url('{{ if isset .Params " image" }} {{
+					.Params.image }} {{ else }} {{ .Site.Params.siteOG }} {{ end }}');"></div>
+				<div class="details">
+					<ul class="meta list-inline mb-3">
+						<li class="list-inline-item">
+							{{ if isset .Params "date" }}
+							{{ .Date.Format "January 2, 2006" }}
+							{{ end }}
+						</li>
+						{{ range .Params.categories }}
+						<a href="/categories/{{ . | urlize }}">{{ . }}</a>
+						{{ end }}
+					</ul>
+					<h5 class="post-title">
+						<a href="{{ .Permalink }}">{{ .Title }}</a>
+					</h5>
+					<p class="excerpt mb-0">{{ .Summary | truncate 350 }}</p>
+					{{ if .Truncated }}<div><a href="{{ .RelPermalink }}">Read More…</a></div>{{ end }}
+				</div>
+			</div>
+		</div>
+		{{ end }}
+	</div>
+	
+	</div>
+</div>
+{{ end }}
+{{ end }}

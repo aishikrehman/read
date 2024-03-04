@@ -1,0 +1,95 @@
+- name: HTML
+  url: /u1/exercise
+  children:
+    - name: Tutorials
+      url: /en-US/docs/Learn/HTML
+    - name: HTML basics
+      url: /en-US/docs/Learn/HTML/Introduction_to_HTML
+    - name: Introduction to HTML
+      children:
+        - name: Introduction to HTML overview
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML
+        - name: Getting started with HTML
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started
+        - name: What's in the head? Metadata in HTML
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML
+        - name: HTML text fundamentals
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals
+        - name: Creating hyperlinks
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks
+        - name: Advanced text formatting
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting
+        - name: Document and website structure
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure
+        - name: Debugging HTML
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML
+        - name: "Assessment: Marking up a letter"
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter
+        - name: "Assessment: Structuring a page of content"
+          url: /en-US/docs/Learn/HTML/Introduction_to_HTML/Structuring_a_page_of_content
+    - name: Multimedia and embedding
+      children:
+        - name: Multimedia and embedding overview
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding
+        - name: Images in HTML
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML
+        - name: Video and audio content
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content
+        - name: From object to iframe — other embedding technologies
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies
+        - name: Adding vector graphics to the web
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web
+        - name: Responsive images
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+        - name: "Assessment: Mozilla splash page"
+          url: /en-US/docs/Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page
+    - name: HTML tables
+      children:
+        - name: HTML tables overview
+          url: /en-US/docs/Learn/HTML/Tables
+        - name: HTML table basics
+          url: /en-US/docs/Learn/HTML/Tables/Basics
+        - name: HTML table advanced features and accessibility
+          url: /en-US/docs/Learn/HTML/Tables/Advanced
+        - name: "Assessment: Structuring planet data"
+          url: /en-US/docs/Learn/HTML/Tables/Structuring_planet_data
+- name: References
+  url: /en-US/docs/Web/HTML/Reference
+- name: References
+  nolink: true
+- name: HTML elements
+  children:
+    - name: "<a>"
+      url: /en-US/docs/Web/HTML/Element/a
+    - name: "<abbr>"
+      url: /en-US/docs/Web/HTML/Element/abbr
+    - name: "<acronym>"
+      url: /en-US/docs/Web/HTML/Element/acronym
+      deprecated: true
+- name: HTML elements
+  children:
+    - name: "<a>"
+      url: /en-US/docs/Web/HTML/Element/a
+    - name: "<abbr>"
+      url: /en-US/docs/Web/HTML/Element/abbr
+    - name: "<acronym>"
+      url: /en-US/docs/Web/HTML/Element/acronym
+      deprecated: true
+- name: HTML elements
+  children:
+    - name: "<a>"
+      url: /en-US/docs/Web/HTML/Element/a
+    - name: "<abbr>"
+      url: /en-US/docs/Web/HTML/Element/abbr
+    - name: "<acronym>"
+      url: /en-US/docs/Web/HTML/Element/acronym
+      deprecated: true
+- name: HTML elements
+  children:
+    - name: "<a>"
+      url: /en-US/docs/Web/HTML/Element/a
+    - name: "<abbr>"
+      url: /en-US/docs/Web/HTML/Element/abbr
+    - name: "<acronym>"
+      url: /en-US/docs/Web/HTML/Element/acronym
+      deprecated: true
