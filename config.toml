@@ -1,13 +1,13 @@
-baseUrl = "https://aishikrehman.com/discrete-mathematics/"
+baseUrl = "https://aishikrehman.com/"
 title =  "Discrete Mathematics"
 paginate = 6
 
 [params]
   githubEditBaseUrl = "https://github.com/aishikrehman/discrete-mathematics/"
+  siteUrl = "https://aishikrehman.com/discrete-mathematics/"
   siteSubTitle = "Bengali Computational Linguist"
   siteSubTitleBN = "বাংলা বইয়ের সংগ্রহশালা"
   mainURL = "https://aishikrehman.com/"
-  siteURL = "https://aishikrehman.com/"
   siteName = "ঐশিক রেহমান"
   siteNames = ["জিরোডেমি বই", "ZeroBooks", "0dmey Books"]
   siteLang = "bn-BD"
