@@ -3,7 +3,7 @@ title =  "Discrete Mathematics"
 paginate = 6
 
 [params]
-  githubEditBaseUrl = "https://github.com/aishikrehman/discrete-mathematics/"
+  githubEditBaseUrl = "https://github.com/aishikrehman/discrete-mathematics/edit/main/"
   siteUrl = "https://aishikrehman.com/discrete-mathematics/"
   siteSubTitle = "Bengali Computational Linguist"
   siteSubTitleBN = "বাংলা বইয়ের সংগ্রহশালা"
