@@ -1,9 +1,8 @@
-baseUrl = "https://aishikrehman.com/discrete-mathematics/"
+baseUrl = "https://aishikrehman.com/"
 title =  "Discrete Mathematics"
 paginate = 6
 
 [params]
-  githubEditBaseUrl = "https://github.com/aishikrehman/discrete-mathematics/edit/main/"
   siteUrl = "https://aishikrehman.com/discrete-mathematics/"
   siteSubTitle = "Bengali Computational Linguist"
   siteSubTitleBN = "বাংলা বইয়ের সংগ্রহশালা"
@@ -25,7 +24,10 @@ paginate = 6
   authorURL =  "https://aishikrehman.com/about/"
   authorPicture =  "/assets/images/Aishik Rehman_Mymensingh_2019.jpg"
   math = true
-
+  [params.github]
+    repo = "discrete-mathematics"
+    branch = "main"
+    user = "aishikrehman"
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
