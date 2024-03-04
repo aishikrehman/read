@@ -3,31 +3,38 @@ title =  "Discrete Mathematics"
 paginate = 6
 
 [params]
-  siteUrl = "https://aishikrehman.com/discrete-mathematics/"
-  siteSubTitle = "Bengali Computational Linguist"
-  siteSubTitleBN = "বাংলা বইয়ের সংগ্রহশালা"
-  mainURL = "https://aishikrehman.com/"
-  siteName = "ঐশিক রেহমান"
-  siteNames = ["জিরোডেমি বই", "ZeroBooks", "0dmey Books"]
+  math = true
   siteLang = "bn-BD"
   siteLogo = "/images/favicon.png"
   siteOG = "/images/Aishik Rehman-og-image.png"
   searchText = "খুঁজুন"
   gsc = "https://cse.google.com/cse.js?cx=a3eaf405be35e4a4b"
-  authorName = "Aishik Rehman"
-  authorNameBN = "ঐশিক রেহমান"
-  authorEmail =  "hello@aishikrehman.com"
-  authorFacebook =  "aishikrehman"
-  authorLinkedin =  "aishikrehman"
-  authorGithub =   "aishikrehman"
-  authorPhone =  "+88 016 016 60 666"
-  authorURL =  "https://aishikrehman.com/about/"
-  authorPicture =  "/assets/images/Aishik Rehman_Mymensingh_2019.jpg"
-  math = true
   [params.github]
     repo = "discrete-mathematics"
     branch = "main"
     user = "aishikrehman"
+  [params.url]
+    main = "https://aishikrehman.com/"
+    site = "https://aishikrehman.com/discrete-mathematics/"
+  [params.title]
+    subEN = "--"
+    subBN = "--"
+    titleBN = "ডিসক্রিট ম্যাথমেটিক্স"
+    titleEN = "Discrete Mathematics"
+    names = ["বিচ্ছিন্ন গণিত", "Discrete Mathematics in Bengali"]
+  [params.author]
+    name = "Aishik Rehman"
+    nameBN = "ঐশিক রেহমান"
+    email =  "hello@aishikrehman.com"
+    facebook =  "aishikrehman"
+    linkedin =  "aishikrehman"
+    github =   "aishikrehman"
+    phone =  "+88 016 016 60 666"
+    url =  "https://aishikrehman.com/about/"
+    picture =  "/assets/images/Aishik Rehman_Mymensingh_2019.jpg"
+
+
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
