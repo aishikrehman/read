@@ -3,13 +3,16 @@
 {{ end }}
 
 {{ define "main" }}
+
 {{if .Site.Home.Content }}
 <div class="home">
 	<div class="container">
-		{{.Content}}
-			<hr>
+		<div class="col-lg-8 m-auto pt-5">
+			{{.Content}}
+			
+		</div>
+		
 		<div class="col-lg-8 m-auto">
-			<h2>Docs</h2>
 		{{ range .Site.Pages }}
 		<div class="col-md-12 col-sm-6">
 			<div class="post post-list">
@@ -36,7 +39,6 @@
 		</div>
 		{{ end }}
 	</div>
-	
 	</div>
 </div>
 {{ end }}

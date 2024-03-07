@@ -1,5 +1,5 @@
 <div class="bd-callout{{ with .Get 0 }} bd-callout-{{ . }}{{ end }}">
   {{ with .Get 1 }}<h3> {{ . }}</h3>{{ end }}
-  {{ with .Get "title" }}{{ . }}{{ end }}
+  {{ with .Get "title" }} <span class="callout-title d-block">{{ . }}</span>{{ end }}
   {{ .Inner | markdownify }}
 </div>
