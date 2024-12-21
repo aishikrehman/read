@@ -1,7 +1,7 @@
 baseUrl = "https://aishikrehman.com/"
 title =  "Discrete Mathematics"
 defaultContentLanguage = "bn"
-paginate = 6
+paginate = 10
 
 [params]
   math = true
