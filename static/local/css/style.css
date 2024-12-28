@@ -1,0 +1,57 @@
+.treemenu * {
+    color: var(--bs-body-color);
+    font-family: 'Times New Roman', Times, serif;
+}
+.treemenu summary {
+    list-style-type: '▷ ';
+}
+.treemenu details[open]>summary {
+    list-style-type: '▼ ';
+}
+.treemenu summary::marker {
+    color: #c0c0c0;
+    font-size: 1.2em;
+}
+.treemenu li,
+.treemenu details {
+    list-style-type: none;
+    margin: 0;
+    position: relative
+}
+
+.treemenu li::before,
+.treemenu details::before,
+.treemenu li::after,
+.treemenu details::after {
+    content: '';
+    left: -20px;
+    position: absolute;
+    right: auto
+}
+
+.treemenu li::before,
+.treemenu details::before {
+    border-left: 1px solid #c0c0c0;
+    bottom: 50px;
+    height: 100%;
+    top: 0;
+    width: 1px
+}
+
+.treemenu li::after,
+.treemenu details::after {
+    border-top: 1px solid #c0c0c0;
+    top: 16px;
+    width: 20px
+}
+.treemenu li.active,
+.treemenu li.active a {
+    color: var(--bs-link-color);
+}
+
+
+mjx-container {
+    display: inline!important;
+    text-align: left!important;
+    margin: 1em 0;
+}

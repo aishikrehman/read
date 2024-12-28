@@ -1,0 +1,17 @@
+{{/*  {{- with .Description -}}
+    {{ . }}
+{{- else with .Params.snippet -}}
+    {{ . }}
+{{- else -}}
+    {{- if eq .Kind "home"  -}}
+        {{- if isset .Site.Params.description -}}
+            {{ . }}
+        {{- else -}}
+            {{ .Summary }}
+        {{- end -}}
+    {{- else if eq .Kind "term" -}}
+        {{ i18n "tagDescription" (dict "Title" .Title ) }}
+    {{- else -}}
+        {{ .Summary }}
+    {{- end -}}
+{{- end -}}   */}}
