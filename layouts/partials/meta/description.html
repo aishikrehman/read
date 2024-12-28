@@ -4,7 +4,7 @@
     {{ . }}
 {{- else -}}
     {{- if eq .Kind "home"  -}}
-        {{- with .Site.Params.description -}}
+        {{- if isset .Site.Params.description -}}
             {{ . }}
         {{- else -}}
             {{ .Summary }}
