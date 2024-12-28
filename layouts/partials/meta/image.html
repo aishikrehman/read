@@ -1,8 +1,8 @@
-{{- with .Params.img -}}
+{{- if .Params.img -}}
 {{ . }}
-{{- else with .Params.image -}}
+{{- else if .Params.image -}}
 {{ . }}
-{{- else with .Params.thumbnail -}}
+{{- else if .Params.thumbnail -}}
 {{ . }}
 {{- else -}}
 {{ .Site.BaseURL }}/uploads/Aishik Rehman-og-image.png
