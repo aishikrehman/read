@@ -1,0 +1,26 @@
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+{{ with .OutputFormats.Get "rss" -}}
+{{ printf `
+<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap" rel="stylesheet">
+
+{{ if .Site.Params.useBootstrapMod -}}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}global/css/bootstrap5.3.mod.css">
+{{ else }}
+{{ with .Site.Params.BootstrapCDNVersion }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@{{.}}/dist/css/bootstrap.min.css">
+{{ end -}}
+{{ end -}}
+{{ if .Site.Params.useBootstrapIcons -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{{ end -}}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}global/css/style.css">
+
+{{/*  All Local/Native File Will be Here -- START */}}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}local/css/style.css">
+<script type="text/javascript" src="{{ .Site.BaseURL }}local/js/script.js"></script>
+{{/*  All Local File Will be Here -- END  */}}

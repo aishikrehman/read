@@ -1,0 +1,4 @@
+<div class="alert alert-primary" role="alert">
+    <h3>{{ index .Params 1 }}</h3>
+    <div>{{ .Inner | markdownify | safeHTML }}</div>
+</div>

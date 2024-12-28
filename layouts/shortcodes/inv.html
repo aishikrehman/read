@@ -1,0 +1,5 @@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <h5>Investigate</h5><hr>
+    <p>{{ index .Params 1 }}</p>
+    <p>{{ .Inner | markdownify | safeHTML }}</p>
+  </div>

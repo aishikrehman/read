@@ -1,0 +1,9 @@
+{{- with .Params.img -}}
+{{ . }}
+{{- else with .Params.image -}}
+{{ . }}
+{{- else with .Params.thumbnail -}}
+{{ . }}
+{{- else -}}
+{{ .Site.BaseURL }}/uploads/Aishik Rehman-og-image.png
+{{- end -}}

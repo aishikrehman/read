@@ -1,0 +1,40 @@
+home: "নীড়"
+mintues: "মিনিট"
+timetoread: "পড়তে সময় লাগবে"
+pubon: প্রকাশের তারিখ
+recentPosts: সাম্প্রতিক পোস্ট
+allposts: সমস্ত পোস্ট
+nextpost: পরবর্তী পোস্ট
+prevpost: পূর্ববর্তী পোস্ট
+readmore: আরও পড়ুন
+readNow: পড়ুন
+copyright: এই সাইটের সমস্ত চিত্র ও ভিডিও কন্টেন্ট CC-BY-SA 4.0 লাইসেন্সের আওতায় প্রকাশিত যদি না সংশ্লিষ্ট কনটেন্টে পৃথক লাইসেন্সের উল্লেখ থাকে। তবে এই সাইটের সমস্ত পাঠ্য কনটেন্ট মেধাসত্ত্বের অন্তর্ভুক্ত বলে গন্য হবে।
+allrights: ©২০২৩, সর্বসত্ব সংরক্ষিত
+aishik : ঐশিক রেহমান
+shortbio: সংক্ষিপ্ত পরিচিতি
+termMenu: মেনু
+contact: যোগাযোগ
+name: নাম
+email: ইমেইল
+message: বার্তা
+sentMessage: বার্তা পাঠান
+orsentMessage: অথবা, <a href="mailto:{{ .Site.Params.author.email }}">সরাসরি ইমেইল করুন</a>।
+search: অনুসন্ধান করার জন্য পছন্দসই শব্দটি লিখুন
+date: তারিখ
+relevance: প্রাসঙ্গিকতা
+alter:  "See in {{ .alter }}"
+tagDescription: "{{.Title}} ট্যাগের অধিভুক্ত সকল পোস্টসমূহ "
+findme: "আমাকে {{ .Link }} লিংকে পাবেন"
+
+
+# ColorModeToogler
+toogleTheme: থিম
+themeLight: আলো
+themeDark: আঁধার
+themeAuto: স্বয়ংক্রিয়
+
+# Posts
+sharethispost: শেয়ার
+recentPosts: সাম্প্রতিক পোস্টসমূহ
+relatedPosts: একই রকম অন্যান্য
+allTags: ট্যাগস

@@ -1,0 +1,55 @@
+{{ $currentPage := . }}
+{{ $useAbsolutePaths := true }} {{/* true = /ur/, false = url/ */}}
+{{ $showParentItem := true }} {{/* true will show parent url too with child */}}
+
+{{ $localMenu := "" }}
+{{ $currentSection := .Section }}
+
+{{ if index .Site.Menus $currentSection }}
+  {{ $localMenu = $currentSection }}
+{{ else if .Site.Menus.local }}
+  {{ $localMenu = "local" }}
+{{ else if .Site.Menus.main }}
+  {{ $localMenu = "main" }}
+{{ else }}
+  {{ $localMenu = "" }}
+{{ end }}
+
+{{ range index .Site.Menus $localMenu }}
+  {{ template "menuItem" dict "Item" . "CurrentPage" $currentPage "BasePath" "" "UseAbsolutePaths" $useAbsolutePaths
+    "ShowParentItem" $showParentItem "CurrentSection" $currentSection }} 
+{{ end }}
+
+{{/* Dont touch this Section */}}
+{{ define "menuItem" }}
+  {{ $item := .Item }}
+  {{ $currentPage := .CurrentPage }}
+  {{ $basePath := .BasePath }}
+  {{ $useAbsolutePaths := .UseAbsolutePaths }}
+  {{ $showParentItem := .ShowParentItem }}
+  {{ $currentSection := .CurrentSection }}
+
+  {{ $relLangURL := relLangURL (cond $useAbsolutePaths (printf "%s%s" $currentSection $item.URL) (printf "%s%s" $basePath $item.URL)) }}
+  
+  {{ if $item.HasChildren }}
+    <details>
+      <summary>{{ $item.Name }}</summary>
+      <ul class="ms-3">
+        {{ if $showParentItem }}
+        <li class="{{ if eq $relLangURL $currentPage.RelPermalink }}active fw-bold{{ end }}">
+          <a href="{{ $relLangURL }}">{{ $item.Name }}</a>
+        </li>
+        {{ end }}
+        {{ range $item.Children }}
+        {{ template "menuItem" dict "Item" . "CurrentPage" $currentPage "BasePath" (cond $useAbsolutePaths "" (printf "%s%s/" $basePath $item.URL)) "UseAbsolutePaths" $useAbsolutePaths "ShowParentItem" true "CurrentSection" $currentSection }}
+        {{ end }}
+      </ul>
+    </details>
+  {{ else }}
+    {{ if $showParentItem }}
+    <li class="{{ if eq $relLangURL $currentPage.RelPermalink }}active fw-bold{{ end }}">
+      <a href="{{ $relLangURL }}">{{ $item.Name }}</a>
+    </li>
+    {{ end }}
+  {{ end }}
+{{ end }}
