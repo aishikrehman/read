@@ -13,8 +13,8 @@ livepath: "/" # Path for the site; leave empty if not applicable
 defaultColorMode: "light" # Changing this requires some changes to the colormode.js script; otherwise, it won't work
 activateColorModeToogler: true # Activates the dark/light color mode toggler
 activateGlobalMenu: true # Activates the Global Menu if required
-siteWideDynamicTitle: false
-useSubNavBar: true
+siteWideDynamicTitle: true
+
 
 # Packeges/Dependencies 
 usejQuery: false # Enables jQuery if needed

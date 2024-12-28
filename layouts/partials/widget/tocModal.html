@@ -1,7 +1,0 @@
-{{ if in .TableOfContents "li" }}
-<div id="articleTOC" class="btn-group mb-3 treemenu">
-    <button class="btn border" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
-        aria-expanded="false"><i class="bi bi-list-columns-reverse"></i> Table of Contents</button>
-    <div class="dropdown-menu py-3" style="font-size: 1rem; width: 300px;">{{ .TableOfContents }}</div>
-</div>
-{{ end }}

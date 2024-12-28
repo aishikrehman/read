@@ -1,0 +1,43 @@
+{{ $currentPage := . }}
+<div class="navbar navbar-expand-lg">
+    <div class="container">
+        <div class="collapse navbar-collapse py-2" id="LocalNavigationMenu">
+            {{- if not (in .RelPermalink "/search/") -}}
+            <form action='{{ absLangURL "/search/"}}' method="get" class="d-flex order-sm-1">
+                <input autocomplete="off" class="form-control" name="q" placeholder="{{ .Site.Params.searchText }}"
+                    type="text" value="" aria-describedby="searchbutton" aria-label="SearchInput">
+                <button id="searchbutton" class="input-group-text btn btn-primary" aria-label="SearchButton"
+                    type="submit">
+                    <i class="bi-search"></i>
+                </button>
+            </form>
+            {{ end }}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {{ range .Site.Menus.main }}
+                {{- $relLangURL := relLangURL .URL }}
+                <li
+                    class="nav-item {{ if .HasChildren }}dropdown{{end}} {{ if eq $relLangURL $currentPage.RelPermalink }}active{{ end }}">
+                    {{ if .HasChildren }}
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle">{{ .Name }}</a>
+                    <ul class="dropdown-menu" id="{{ .Name | urlize}}">
+                        <li class="nav-item "></li>
+                        {{ range .Children }}
+                        {{- $relLangURL := relLangURL .URL }}
+                        <li class="nav-item">
+                            <a class="dropdown-item {{ if eq $relLangURL $currentPage.RelPermalink }}active{{ end }}"
+                                href='{{ $relLangURL }}'>{{ .Name }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <a href="{{ absLangURL .URL}}" class="nav-link">
+                        {{ .Name }}
+                    </a>
+                    {{end}}
+                </li>
+                {{end}}
+
+            </ul>
+        </div>
+    </div>
+</div>
