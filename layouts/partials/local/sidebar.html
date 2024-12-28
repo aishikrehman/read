@@ -1,9 +1,16 @@
 {{ $currentPage := . }}
-{{ $useAbsolutePaths := true }} {{/* true = /ur/, false = url/ */}}
-{{ $showParentItem := true }} {{/* true will show parent url too with child */}}
+{{ $pathStructure := "parent" }} {{/* Can be "parent", "base", or "ancestor" */}}
+{{ $showParentItem := true }} {{/* true will show parent URL too with child */}}
 
+<h2>DEBUG</h2>
+{{ $currentPage }} <br>
+{{ $pathStructure  }} <br>
 {{ $localMenu := "" }}
 {{ $currentSection := .Section }}
+<hr>
+{{ range index .Site.Menus "discrete-mathematics"}}
+{{ .URL}} <br>
+{{ end }}
 
 {{ if index .Site.Menus $currentSection }}
   {{ $localMenu = $currentSection }}
@@ -16,21 +23,33 @@
 {{ end }}
 
 {{ range index .Site.Menus $localMenu }}
-  {{ template "menuItem" dict "Item" . "CurrentPage" $currentPage "BasePath" "" "UseAbsolutePaths" $useAbsolutePaths
-    "ShowParentItem" $showParentItem "CurrentSection" $currentSection }} 
+  {{ template "menuItem" dict "Item" . "CurrentPage" $currentPage "PathStructure" $pathStructure "ShowParentItem" $showParentItem "CurrentSection" $currentSection }} 
 {{ end }}
 
-{{/* Dont touch this Section */}}
+{{/* Menu Item Template */}}
 {{ define "menuItem" }}
   {{ $item := .Item }}
   {{ $currentPage := .CurrentPage }}
-  {{ $basePath := .BasePath }}
-  {{ $useAbsolutePaths := .UseAbsolutePaths }}
+  {{ $pathStructure := .PathStructure }}
   {{ $showParentItem := .ShowParentItem }}
   {{ $currentSection := .CurrentSection }}
 
-  {{ $relLangURL := relLangURL (cond $useAbsolutePaths (printf "%s%s" $currentSection $item.URL) (printf "%s%s" $basePath $item.URL)) }}
-  
+  {{/* Adjust URL handling based on path structure */}}
+  {{ $relLangURL := "" }}
+  {{ if eq $pathStructure "parent" }}
+    {{/* /read/SECTION/url */}}
+    {{ $relLangURL = absLangURL (printf "/%s%s" $currentSection $item.URL) }}
+  {{ else if eq $pathStructure "base" }}
+    {{/* /read/url */}}
+    {{ $relLangURL = relLangURL $item.URL }}
+  {{ else if eq $pathStructure "ancestor" }}
+    {{/* /read/SECTION/url */}}
+    {{ $relLangURL = absLangURL (printf "/%s%s" $currentSection $item.URL) }}
+  {{ else }}
+    {{/* Default behavior, handle URL as normal */}}
+    {{ $relLangURL = relLangURL $item.URL }}
+  {{ end }}
+
   {{ if $item.HasChildren }}
     <details>
       <summary>{{ $item.Name }}</summary>
@@ -41,7 +60,7 @@
         </li>
         {{ end }}
         {{ range $item.Children }}
-        {{ template "menuItem" dict "Item" . "CurrentPage" $currentPage "BasePath" (cond $useAbsolutePaths "" (printf "%s%s/" $basePath $item.URL)) "UseAbsolutePaths" $useAbsolutePaths "ShowParentItem" true "CurrentSection" $currentSection }}
+        {{ template "menuItem" dict "Item" . "CurrentPage" $currentPage "PathStructure" "ancestor" "ShowParentItem" true "CurrentSection" $currentSection }}
         {{ end }}
       </ul>
     </details>

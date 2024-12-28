@@ -19,7 +19,7 @@
             </a>
             {{- end -}}
             <div class="d-flex row-center" id="accessibilityMenu">
-                {{/* Global Menu Toogle Button */}}
+                {{/* Global Menu Toogle Button -- START */}}
                 {{- with .Site.Params.activateGlobalMenu -}}
                 <div class="border-right" id="globalMenu">
                     <button type="button" class="btn nav-link pe-2" data-bs-toggle="collapse"
@@ -29,7 +29,8 @@
                     </button>
                 </div>
                 {{- end -}}
-                {{/* Languages -- Only for Multiligual Site*/}}
+                {{/* Global Menu Toogle Button -- END */}}
+                {{/* Languages -- Only for Multiligual Site -- START */}}
                 {{- with .Site.IsMultiLingual -}}
                 <div class="dropdown border-right" id="langSwitcher">
                     <button type="button" class="btn nav-link px-2" data-bs-toggle="dropdown" aria-expanded="false"
@@ -48,8 +49,8 @@
                     </ul>
                 </div>
                 {{- end -}}
-
-                {{/* Theme (Dark/Light) Switcher */}}
+                {{/* Languages -- Only for Multiligual Site -- END */}}
+                {{/* Theme (Dark/Light) Switcher -- START */}}
                 {{- with .Site.Params.activateColorModeToogler -}}
                 <div class="dropdown" id="colorModeToogler">
                     <button type="button" class="btn nav-link px-2" id="colorModeTooglerBtn" aria-expanded="false"
@@ -72,7 +73,7 @@
                     </ul>
                 </div>
                 {{- end -}}
-                {{ block "headermenu" . }}{{ end }}
+                {{/* Theme (Dark/Light) Switcher -- END*/}}
                 {{/* Local Menu Navigation Toogler -- START*/}}
                 <div id="LocalNavigationToogleIcon">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
