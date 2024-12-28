@@ -1,5 +1,0 @@
-{{- if (replaceRE "^[A-Za-z]" "" . | ne .) }}
-{{ . | humanize }}
-{{- else -}}
-{{ . }}
-{{- end -}}
