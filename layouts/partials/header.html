@@ -84,6 +84,9 @@
             </div>
         </div>
     </nav>
+    {{ if .Site.Params.useSubNavBar }}
+    {{ partial "local/menu.html" . }}
+    {{ end }}
     {{ if .Site.Params.activateGlobalMenu }}
     {{ partial "global/menu.html" . }}
     {{ end }}

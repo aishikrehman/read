@@ -1,0 +1,7 @@
+{{ if in .TableOfContents "li" }}<details open>
+    <summary class=" fw-bold">
+        {{/* <i class="bi bi-list-columns-reverse"></i> */}}
+        Table of Contents</summary>
+    {{ .TableOfContents }}
+</details>
+<hr>{{ end }}

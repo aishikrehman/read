@@ -1,0 +1,272 @@
+---
+title: জন্ম নিবন্ধন নতুন ফরম্যাটে রূপান্তর
+view: full
+---
+<link href='http://sonnetdp.github.io/nikosh/css/nikosh.css' rel='stylesheet' type='text/css'>
+<form id="pdfForm" class="row g-5" onsubmit="return generatePreview(event)">
+  <div class="col-md-5 col-lg-4">
+    <!-- Form Fields -->
+    <div>
+      <label for="upname" class="form-label">ইউনিয়নের নাম</label>
+      <input type="text" class="form-control" id="upname" value="Maijbag Union Parishad" required>
+    </div>
+    <div>
+      <label for="upzdis" class="form-label">উপজেলা, জেলা</label>
+      <input type="text" class="form-control" id="upzdis" value="Ishwarganj, Mymensingh" required>
+    </div>
+    <div>
+      <label for="code" class="form-label">সিকিউরিটি কোড <br>(Security Code)</label>
+      <select class="form-control" type="text" id="code" required>
+        <option value="">---Select---</option>
+        <option value="VXCY">VXCY</option>
+        <option value="TRRS">TRRS</option>
+      </select>
+    </div>
+    <div>
+      <label for="dor" class="form-label">নিবন্ধনের তারিখ <br>(Date of Registration)</label>
+      <input type="text" class="form-control" id="dor" required placeholder="DD/MM/YYYY">
+    </div>
+    <div>
+      <label for="doi" class="form-label">সনদ ইস্যুর তারিখ <br> (Date of Issuance)</label>
+      <input type="text" class="form-control" id="doi" required placeholder="DD/MM/YYYY">
+    </div>
+    <div>
+      <label for="pob_bn" class="form-label">জন্মস্থান</label>
+      <input type="text" class="form-control" id="pob_bn" value="ময়মনসিংহ" required>
+    </div>
+    <div>
+      <label for="pob" class="form-label">Place of Birth</label>
+      <input type="text" class="form-control" id="pob" value="Mymensingh" required>
+    </div>
+    <div class="btn-group mt-3">
+      <button type="submit" class="btn btn-primary">Preview</button>
+      <button type="button" class="btn btn-success" id="printBtn" style="display: none;" onclick="printSVG()">Print</button>
+    </div>
+  </div>
+  <div class="col-md-7 col-lg-8">
+    <!-- Additional Form Fields -->
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="brn" class="form-label">জন্ম নিবন্ধন নং (Birth Registration Number)</label>
+        <input type="text" class="form-control" id="brn" required maxlength="17">
+      </div>
+      <div class="col-6">
+        <label for="dob" class="form-label">জন্ম তারিখ <br> (Date of Birth)</label>
+        <input type="text" class="form-control" id="dob" required placeholder="DD/MM/YYYY">
+      </div>
+      <div class="col-6">
+        <label for="sex" class="form-label">লিঙ্গ <br>Sex</label>
+        <select class="form-control" type="text" id="sex" required>
+          <option value="">---Select---</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="naam" class="form-label">নাম বাংলায়</label>
+        <input type="text" class="form-control" id="naam" required>
+      </div>
+      <div class="col-md-6">
+        <label for="name" class="form-label">Name in English</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="col-md-6">
+        <label for="pita" class="form-label">পিতার নাম</label>
+        <input type="text" class="form-control" id="pita" required>
+      </div>
+      <div class="col-md-6">
+        <label for="fname" class="form-label">Father's Name</label>
+        <input type="text" class="form-control" id="fname" required>
+      </div>
+      <div class="col-md-6">
+        <label for="mata" class="form-label">মাতার নাম</label>
+        <input type="text" class="form-control" id="mata" required>
+      </div>
+      <div class="col-sm-6">
+        <label for="mname" class="form-label">Mother's Name</label>
+        <input type="text" class="form-control" id="mname" required>
+      </div>
+      <div class="col-md-6">
+        <label>স্থায়ী ঠিকানা:</label>
+        <input class="form-control"  id="thikana1" placeholder="Line 1" required>
+        <input class="form-control" id="thikana2" placeholder="Line 2" value="মাইজবাগ, ঈশ্বরগঞ্জ" required>
+        <input class="form-control" id="thikana3" placeholder="Line 3" value="ময়মনসিংহ" required>
+      </div>
+      <div class="col-md-6">
+        <label>Permanent Addres:</label>
+        <input class="form-control" id="perma1" placeholder="Line 1" required>
+        <input class="form-control" id="perma2" placeholder="Line 2" value="Maijbag, Ishwarganj" required>
+        <input class="form-control" id="perma3" placeholder="Line 3" value="Mymensingh" required>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div id="svgContainer"></div>
+
+<script>
+  // Function to generate the preview inside the page
+  async function generatePreview(event) {
+    event.preventDefault();
+
+    const svgText = await getUpdatedSVG();
+    const svgContainer = document.getElementById('svgContainer');
+    svgContainer.innerHTML = svgText; 
+
+    svgContainer.scrollIntoView({ behavior: 'smooth' });
+    const printBtn = document.getElementById('printBtn');
+    printBtn.style.display = 'inline-block';
+  }
+
+  // Function to print the SVG in a new window
+  async function printSVG() {
+    const updatedSVG = await getUpdatedSVG();
+
+    const printWindow = window.open("", "PrintWindow", "width=800,height=600");
+    printWindow.document.open();
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Print Preview</title>
+        <style>
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+          }
+          svg {
+            max-width: 100%;
+            max-height: 100%;
+          }
+        </style>
+      </head>
+      <body>
+        ${updatedSVG}
+      </body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  }
+
+  // Function to fetch and update the SVG with form data
+  async function getUpdatedSVG() {
+    const response = await fetch('/br/template.svg');
+    let svgText = await response.text();
+
+    function convertDateToWords(dateStr) {
+      const basicNumbers = ["", "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth",
+        "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth", "Sixteenth", "Seventeenth",
+        "Eighteenth", "Nineteenth"];
+      const number = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+        "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+        "Seventeen", "Eighteen", "Nineteen"];
+      const tensNumbers = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+      const digits = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+      const monthNames = ["", "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+      // Split the date into dd, mm, yyyy
+      const [dd, mm, yyyy] = dateStr.split("/").map(Number);
+      // Convert day (dd) to words
+      let dayWord;
+      if (dd < 20) {
+        dayWord = basicNumbers[dd];
+      } else {
+        dayWord = tensNumbers[Math.floor(dd / 10)] + (dd % 10 !== 0 ? " " + basicNumbers[dd % 10] : "");
+      }
+      // Convert month (mm) to words
+      const monthWord = monthNames[mm];
+      // Convert year (yyyy) to words
+      let yearWord = "";
+      if (yyyy < 2000) {
+        yearWord = "Nineteen ";
+        const lastTwoDigits = yyyy % 100;
+        if (lastTwoDigits < 20) {
+          yearWord += basicNumbers[lastTwoDigits];
+        } else {
+          yearWord += tensNumbers[Math.floor(lastTwoDigits / 10)] + (lastTwoDigits % 10 !== 0 ? " " + digits[lastTwoDigits % 10] : "");
+        }
+      } else if (yyyy === 2000) {
+        yearWord = "Two Thousand";
+      } else {
+        yearWord = "Two Thousand ";
+        const lastTwoDigits = yyyy % 100;
+        if (lastTwoDigits < 20) {
+          yearWord += number[lastTwoDigits];
+        } else {
+          yearWord += tensNumbers[Math.floor(lastTwoDigits / 10)] + (lastTwoDigits % 10 !== 0 ? " " + digits[lastTwoDigits % 10] : "");
+        }
+      }
+      // Returning the full date in words
+      return `${dayWord} of ${monthWord}  ${yearWord.trim()}`;
+    }
+    function titleCase(str) {
+      str = str.toLowerCase().split(' ');
+      for (let i = 0; i < str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+      }
+      return str.join(' ');
+    }
+    // Getting the form data
+    const upname = titleCase(document.getElementById('upname').value);
+    const upzdis = titleCase(document.getElementById('upzdis').value);
+    const brn = document.getElementById('brn').value;
+    const code = document.getElementById('code').value.toUpperCase();
+    const doi = document.getElementById('doi').value;
+    const dor = document.getElementById('dor').value;
+    const dob = document.getElementById('dob').value;
+    // Conditional check for dob and converting date to words
+    let dobin = "";
+    if (/^\d{2}\/\d{2}\/\d{4}$/.test(dob)) {
+      dobin = convertDateToWords(dob);
+    }
+    const sex = document.getElementById('sex').value;
+    const naam = document.getElementById('naam').value;
+    const name = titleCase(document.getElementById('name').value);
+    document.title = name;
+    const pita = document.getElementById('pita').value;
+    const fname = titleCase(document.getElementById('fname').value);
+    const mata = document.getElementById('mata').value;
+    const mname = titleCase(document.getElementById('mname').value);
+    const pob_bn = document.getElementById('pob_bn').value;
+    const pob = document.getElementById('pob').value;
+    const thikana1 = document.getElementById('thikana1').value;
+    const thikana2 = document.getElementById('thikana2').value;
+    const thikana3 = document.getElementById('thikana3').value;
+    const perma1 = document.getElementById('perma1').value;
+    const perma2 = document.getElementById('perma2').value;
+    const perma3 = document.getElementById('perma3').value;
+
+    // Replace placeholders in the SVG template with form data
+    svgText = svgText.replace('${upname}', upname);
+    svgText = svgText.replace('${code}', code);
+    svgText = svgText.replace('${upzdis}', upzdis);
+    svgText = svgText.replace('${brn}', brn);
+    svgText = svgText.replace('${barcode}', brn);
+    svgText = svgText.replace('${dor}', dor);
+    svgText = svgText.replace('${doi}', doi);
+    svgText = svgText.replace('${dob}', dob);
+    svgText = svgText.replace('${dobin}', dobin); // Fill the converted date
+    svgText = svgText.replace('${sex}', sex);
+    svgText = svgText.replace('${naam}', naam);
+    svgText = svgText.replace('${name}', name);
+    svgText = svgText.replace('${pita}', pita);
+    svgText = svgText.replace('${fname}', fname);
+    svgText = svgText.replace('${mata}', mata);
+    svgText = svgText.replace('${mname}', mname);
+    svgText = svgText.replace('${pob_bn}', pob_bn);
+    svgText = svgText.replace('${pob}', pob);
+    svgText = svgText.replace('${thikana1}', thikana1);
+    svgText = svgText.replace('${thikana2}', thikana2);
+    svgText = svgText.replace('${thikana3}', thikana3);
+    svgText = svgText.replace('${perma1}', perma1);
+    svgText = svgText.replace('${perma2}', perma2);
+    svgText = svgText.replace('${perma3}', perma3);
+
+    return svgText;
+  }
+</script>
